@@ -41,12 +41,8 @@ public class ProductManager {
 
     public void removeById(int id) {
         if (repository.findById(id) == null) {
-            throwUnchecked(id);
+            throw new NotFoundException("Element with id: " + id + " not found");
         }
         repository.removeById(id);
-    }
-
-    public void throwUnchecked(int id) {
-        throw new NotFoundException("Element with id: " + id + " not found");
     }
 }
